@@ -2,11 +2,17 @@ pipeline {
     agent none
 
     environment {
-        APP = credentials('harik_desicantik')
+        AUTHOR = 'Ahmad Muharik Al Ansori'
+        EMAIL = 'ahmadmuharik@gmail.com'
+        WEB = 'https://www.mim.com'
     }
 
     stages {
         stage('Prepare') {
+            environment {
+                APP = credentials('harik_desicantik')
+            }
+
             agent {
                 node {
                     label 'linux'
