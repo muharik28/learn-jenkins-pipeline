@@ -9,6 +9,8 @@ pipeline {
 
     triggers {
         cron('*/5 * * * *')
+        // pollSCM('*/5 * * * *')
+        // upstream(upstreamProjects: 'belajar-pipeline,Belajar Jenkins', threshold: hudson.model.Result.SUCCESS)
     }
 
     parameters {
