@@ -9,6 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Start Build'
+                sh 'chmod +x mvnw'
                 sh './mvnw clean compile test-compile'
                 echo 'Finish Build'
             }
@@ -17,6 +18,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Start Test'
+                sh 'chmod +x mvnw'
                 sh './mvnw test'
                 echo 'Finish Test'
             }
