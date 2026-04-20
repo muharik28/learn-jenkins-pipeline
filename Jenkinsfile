@@ -1,6 +1,12 @@
 pipeline {
     agent none
 
+    environment {
+        AUTHOR = 'Ahmad Muharik Al Ansori'
+        EMAIL = 'ahmadmuharik@gmail.com'
+        WEB = 'https://www.mim.com'
+    }
+
     stages {
         stage('Prepare') {
             agent {
@@ -10,6 +16,9 @@ pipeline {
             }
 
             steps {
+                echo "Author ${AUTHOR}"
+                echo "Email ${EMAIL}"
+                echo "Web ${WEB}"
                 echo "Start Job : ${env.JOB_NAME}"
                 echo "Start Build : ${env.BUILD_DISPLAY_NAME}"
                 echo "Branch Name : ${env.BRANCH_NAME}"
