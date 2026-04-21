@@ -28,14 +28,14 @@ pipeline {
 
     stages {
         stage('Preparation') {
-            agent {
-                node {
-                    label 'linux'
-                }
-            }
 
-            stages {
+            parallel {
                 stage('Prepare Java') {
+                    agent {
+                        node {
+                            label 'linux'
+                        }
+                    }
                     steps {
                         echo 'Prepare Java'
                         sleep(5)
@@ -43,6 +43,11 @@ pipeline {
                 }
 
                 stage('Prepare Maven') {
+                    agent {
+                        node {
+                            label 'linux'
+                        }
+                    }
                     steps {
                         echo 'Prepare Maven'
                         sleep(5)
