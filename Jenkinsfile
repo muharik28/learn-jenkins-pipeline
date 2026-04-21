@@ -108,7 +108,7 @@ pipeline {
             }
         }
 
-         stage('Deploy') {
+        stage('Deploy') {
             input {
                 message 'Can we deploy?'
                 ok 'Yes, of course'
@@ -129,6 +129,24 @@ pipeline {
                 sleep(5)
                 echo 'Hello Deploy 2'
                 echo 'Hello Deploy 3'
+            }
+        }
+
+        stage('Release') {
+            when {
+                expression {
+                    return params.DEPLOY
+                }
+            }
+
+            agent {
+                node {
+                    label 'linux'
+                }
+            }
+
+            steps {
+                echo 'Release it'
             }
         }
     }
