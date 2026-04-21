@@ -7,11 +7,11 @@ pipeline {
         WEB = 'https://www.mim.com'
     }
 
-    triggers {
-        cron('*/5 * * * *')
-        // pollSCM('*/5 * * * *')
-        // upstream(upstreamProjects: 'belajar-pipeline,Belajar Jenkins', threshold: hudson.model.Result.SUCCESS)
-    }
+    // triggers {
+    //     cron('*/5 * * * *')
+    //     // pollSCM('*/5 * * * *')
+    //     // upstream(upstreamProjects: 'belajar-pipeline,Belajar Jenkins', threshold: hudson.model.Result.SUCCESS)
+    // }
 
     parameters {
         string(name: "NAME", defaultValue: "Guest", description: "What is your name?")
@@ -109,6 +109,12 @@ pipeline {
         }
 
          stage('Deploy') {
+            input {
+                message 'Can we deploy?'
+                ok 'Yes, of course'
+                submitter 'superadmin,muharik'
+            }
+
             agent {
                 node {
                     label 'linux'
