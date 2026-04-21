@@ -40,18 +40,18 @@ pipeline {
                         values '32', '64'
                     }
                 }
-            }
 
-            stages {
-                stage('OS Setup') {
-                    agent {
-                        node {
-                            label 'linux'
+                stages {
+                    stage('OS Setup') {
+                        agent {
+                            node {
+                                label 'linux'
+                            }
                         }
-                    }
 
-                    steps {
-                        echo "Setup ${OS} ${ARC}"
+                        steps {
+                            echo "Setup ${OS} ${ARC}"
+                        }
                     }
                 }
             }
